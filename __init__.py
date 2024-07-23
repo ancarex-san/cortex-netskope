@@ -1,1 +1,1 @@
-"""CTE Palo Alto Networks Cortex XDR Plugin Package."""
+"""CTE Palo Alto Networks Cortex XDR Plugin Package Incidents."""
