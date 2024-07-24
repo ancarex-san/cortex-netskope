@@ -1,8 +1,8 @@
 {
-  "name": "Palo Alto Networks Cortex XDR incidents",
-  "id": "palo_alto_networks_cortex_xdr_incidents",
+  "name": "CortexXDRIncidentsPlugin",
+  "id": "cortex_xdr_incidents_plugin",
   "version": "1.0.0",
-  "description": "This plugin fetches incidents every 60 seconds",
+  "description": "This plugin fetches incidents from Palo Alto Networks Cortex XDR and processes them accordingly.",
   "patch_supported": true,
   "push_supported": true,
   "configuration": [
@@ -31,24 +31,6 @@
       "description": "API Key can be found in API Keys under Configurations section from Palo Alto Networks Cortex XDR Platform."
     },
     {
-      "label": "Authentication Method",
-      "key": "auth_method",
-      "type": "choice",
-      "choices": [
-        {
-          "key": "Standard",
-          "value": "standard"
-        },
-        {
-          "key": "Advanced",
-          "value": "advanced"
-        }
-      ],
-      "default": "standard",
-      "mandatory": true,
-      "description": "Select the authentication method that is used while creating the API Key."
-    },
-    {
       "label": "Enable Polling",
       "key": "is_pull_required",
       "type": "choice",
@@ -64,90 +46,15 @@
       ],
       "default": "Yes",
       "mandatory": true,
-      "description": "Enable/Disable polling Threat IoCs from Palo Alto Networks Cortex XDR. Disable if you only need to push Threat IoCs to Palo Alto Networks Cortex XDR."
+      "description": "Enable/Disable polling incidents from Palo Alto Networks Cortex XDR."
     },
     {
-      "label": "Type of Threat data to pull",
-      "key": "threat_data_type",
-      "type": "multichoice",
-      "choices": [
-        {
-          "key": "SHA256",
-          "value": "sha256"
-        },
-        {
-          "key": "MD5",
-          "value": "md5"
-        }
-      ],
-      "default": [
-        "sha256",
-        "md5"
-      ],
-      "mandatory": false,
-      "description": "Type of Threat data to pull. Allowed values are SHA256 and MD5."
-    },
-    {
-      "label": "Severity",
-      "key": "severity",
-      "type": "multichoice",
-      "choices": [
-        {
-          "key": "Informational",
-          "value": "informational"
-        },
-        {
-          "key": "Low",
-          "value": "low"
-        },
-        {
-          "key": "Medium",
-          "value": "medium"
-        },
-        {
-          "key": "High",
-          "value": "high"
-        },
-        {
-          "key": "Critical",
-          "value": "critical"
-        }
-      ],
-      "default": [
-        "informational",
-        "low",
-        "medium",
-        "high",
-        "critical"
-      ],
-      "mandatory": false,
-      "description": "Only indicators with matching severity will be saved."
-    },
-    {
-      "label": "Enable Tagging",
-      "key": "enable_tagging",
-      "type": "choice",
-      "choices": [
-        {
-          "key": "Yes",
-          "value": "yes"
-        },
-        {
-          "key": "No",
-          "value": "no"
-        }
-      ],
-      "default": "yes",
-      "mandatory": true,
-      "description": "Enable/Disable tagging functionality."
-    },
-    {
-      "label": "Initial Range (in days)",
-      "key": "days",
+      "label": "Fetch Interval (in seconds)",
+      "key": "fetch_interval",
       "type": "number",
+      "default": 3600,
       "mandatory": true,
-      "default": 7,
-      "description": "Number of days to pull the Threat IoCs for the initial run."
+      "description": "Interval in seconds to fetch incidents from Palo Alto Networks Cortex XDR."
     }
   ]
 }
